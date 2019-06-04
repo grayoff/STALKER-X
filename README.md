@@ -482,7 +482,7 @@ love.run = () ->
 
 # DOCUMENTATION
 
-#### `Camera(x, y, w, h, scale, rotation)`
+#### `Camera(x, y, w, h, scale, rotation, sx, sy)`
 
 Creates a new Camera.
 
@@ -498,6 +498,8 @@ Arguments:
 * `h=love.graphics.getHeight()` `(number)` - The camera's height. Defaults to `love.graphics.getHeight()`
 * `scale=1` `(number)` - The camera's scale. Defaults to `1`
 * `rotation=0` `(number)` - The camera's rotation. Defaults to `0`
+* `sx=1` `(number)` - The windows's scale factor W. Defaults to `1`
+* `sy=1` `(number)` - The windows's scale factor H. Defaults to `1`
 
 Returns:
 
