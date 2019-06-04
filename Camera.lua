@@ -75,9 +75,10 @@ end
 local Camera = {}
 Camera.__index = Camera
 
-local function new(x, y, w, h, scale, rotation)
+local function new(x, y, w, h, scale, rotation, sx, sy)
     return setmetatable({
         x = x or (w or love.graphics.getWidth())/2, y = y or (h or love.graphics.getHeight())/2,
+        sx = sx or 1, sy = sy or 1,
         mx = x or (w or love.graphics.getWidth())/2, my = y or (h or love.graphics.getHeight())/2,
         screen_x = x or (w or love.graphics.getWidth())/2, screen_y = y or (h or love.graphics.getHeight())/2,
         w = w or love.graphics.getWidth(), h = h or love.graphics.getHeight(),
@@ -128,7 +129,8 @@ function Camera:toCameraCoords(x, y)
 end
 
 function Camera:getMousePosition()
-    return self:toWorldCoords(love.mouse.getPosition())
+    local mx, my = love.mouse.getPosition()
+    return self:toWorldCoords(mx/self.sx, my/self.sy)
 end
 
 function Camera:shake(intensity, duration, frequency, axes)
